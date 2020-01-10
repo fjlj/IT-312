@@ -1,30 +1,20 @@
-// DataTypes.cpp : The data types to declare each of the variables is missing.
-// Based on the value being stored in the variable and the comments beside it, 
-// fill in the data type at the beginning of each line.  Then compile and run 
-// program to make sure you selected the correct types.
-//
-// After you submit your answers, try changing the values stored in the
-// variables.  What can you learn about the different data types?
-//
-
-#include "stdafx.h"
 #include <cstdlib>
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	 classAverage = 90.7; //Decimal number
-	 letterScore = 'A'; //Single letter
-	 testScore = 95; //Whole number value
-	 classTestAverage = 88.4f; //Decimal number, notice the 'f' at the end
-	 colorCode{
+	double classAverage = 90.7; //Decimal number
+	char letterScore = 'A'; //Single letter
+	int testScore = 95; //Whole number value
+	float classTestAverage = 88.4f; //Decimal number, notice the 'f' at the end
+	enum colorCode {
 		Green = 1,
 		Yellow = 5,
 		Red = 10
 	} gradebookColor; //Stores list of values
 	gradebookColor = Green; //This line does not need a declaration, it was declared in the line above
-	 isStudentPassing = true; //Could be true or false
+	bool isStudentPassing = true; //Could be true or false
 
 	cout << "The class average is currently "
 		<< classAverage
