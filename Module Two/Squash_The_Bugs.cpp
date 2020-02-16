@@ -11,7 +11,7 @@
 // $6.00 per 1000 gallons for over 20000.
 // The bill is then displayed to the user.
 
-#include "stdafx.h"
+#include "pch.h"
 #include <cstdlib>
 #include <iostream>
 #include <iomanip>
@@ -19,32 +19,32 @@ using namespace std;
 
 int main()
 {
-	double gallons, charge = 0, total;
-	const int fee = 15;
-	int costUpTo6K = 2.35,
+	double gallons, charge, total = 0.0;		//initialize all values to 0.0
+	const double fee = 15;						//since we are working in decimals already and dont have space constrains double is neater here and avoids the possibility of truncation.
+	double costUpTo6K = 2.35,	                //change int to double... dealing with decimals here.. (float would also work...) technically valid syntax, could be mistaken for assignment.
 		costUpTo20K = 3.75,
 		costOver20K = 6.00;
 
 	cout << "Enter the total number of gallons used, divided by 1000: ";
 	cin >> gallons;
 
-	if (gallons > 20){
+	if (gallons > 20.0) {						//explicitly compare with a float value (just easier to know that gallons was declared double... could alsu use hungarian style naming).
 		charge = (gallons - 20) * costOver20K;
-		charge = charge + (14 * costUpTo20K)
-		charge = charge + (6 * costUpTo6K);
+		charge += (14 * costUpTo20K);			//I believe there was a missing semi-colon i placed here
+		charge += (6 * costUpTo6K);				//also using += rather than re assignment, easier to differentiate from initial assignment.
 	}
-	else if (gallons > 6 && gallons <= 20){
-		charge == (gallons - 6) * costUpTo20K;
-		charge = charge + (6 * costUpTo6K);
+	else if (gallons > 6 && gallons <= 20) {
+		charge = (gallons - 6) * costUpTo20K;	//same here just some formatting fixes.
+		charge += (6 * costUpTo6K);
 	}
 	else {
-		charge = gallons * costupto6k;
+		charge = gallons * costUpTo6K;			//mis-spelling of variable name
 	}
 
 
 	total = charge + fee;
 	cout << "You have used " << gallons << " thousand gallons of water." << endl;
-	cout << "Your total water bill is $" << setprecision(2) << fixed << fee;
+	cout << "Your total water bill is $" << setprecision(2) << fixed << total;   //use total calculation rather than just fee.
 
 	return 0;
 }
