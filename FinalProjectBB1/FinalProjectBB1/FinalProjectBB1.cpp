@@ -14,6 +14,7 @@
 #include <string>   //used to process strings
 #include <vector>   //really only used to store player names...
 #include <sstream>  //used for string stream processing
+#include <fstream>  //used for file stream processing
 
 using namespace std;
 
@@ -361,7 +362,7 @@ int determineWinner(int numPlayers, int *scores) {
 	int winInd = 0;
 
 	//title for score board
-	cout << "Player | Score" << endl;
+	cout << "Player |   Score" << endl;
 
 	//loop through each players score
 	for (int i = 0; i < numPlayers; i++) 
@@ -383,6 +384,43 @@ int determineWinner(int numPlayers, int *scores) {
 
 int main()
 {
+
+	//display rules file if it is found otherwise continue execution.
+	bool   startOver = true;    //used to loop program execution after finished
+
+	while (startOver) {
+
+		ifstream frules("farkle_rules.txt");   //open rules text file for reading
+
+		if (frules.is_open())                  //make sure we were able to open the file
+		{
+			char   repeat = 'y';     //used to store user response after execution
+			string line = "";      //used to store each read line from file.
+
+			system("cls");           //clear console output buffer 
+			cout << "Lets go over a few Guidlines." << endl;
+
+			//read the file line by line, pausing if the next line to be displayed has a '*' in the second position
+			while (getline(frules, line)) {
+				if (line[1] == '*') system("pause");
+				cout << line << endl;
+			}
+
+			//close the file handle.
+			frules.close();
+
+			//prompt to see again or exit
+			cout << "Would you like to see these rules again? [Y|n]: ";
+			cin >> repeat;
+			startOver = (repeat != 'n' && repeat != 'N');
+		}
+		else {
+			//display error and end execution after a pause.
+			cout << "Unable to open file farkle_rules.txt.... Skipping" << endl;
+			startOver = false;
+			system("pause");
+		}
+	}
 
 	//various state variables as well as accumulator variables
 	bool exiting        =   false;	//used to allow another game when finished

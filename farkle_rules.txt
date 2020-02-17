@@ -1,0 +1,29 @@
+********************RULES OF FARKLE********************
+1. Select the number of players and set their names
+2. Play begins with first player rolling 6 dice
+3. To begin scoring points you must 'Enter' the game.
+4. Current player will select 'point' dice to be held 
+   by typing in the corresponding dice ID's unheld
+   dice will be re-rolled.
+5. Player turn ends when all dice are held or a 
+   'Farkle' occurs.
+6. if all held dice are 'point' dice the player has 
+   'Hot Dice' and must roll all dice at least one more
+   time. Good Luck!
+
+**********************DEFINITIONS**********************
+'Enter'      - Achieves at least 1000 points in a
+               single turn (required to begin scoring).
+
+'Point Dice' - A value of 1 = 100 points
+             - A value of 5 = 50  points
+             - Three of a kind in a single
+               roll = 100 times face value
+               (exception three 1's is 1000 points)
+
+'Farkle'     - Occures when rolled dice results in no
+               new point dice.
+
+'Hot Dice'   - When a player ends their turn having
+               held all point dice. The player must
+               roll all 6 dice at least 1 more time
